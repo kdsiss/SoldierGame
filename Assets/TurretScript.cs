@@ -77,6 +77,7 @@ public class Turret : MonoBehaviour
 
     private void shoot()
     {
+        GetComponent<AudioSource>().Play();
         characterAnimation.damage(20f);
         
     }

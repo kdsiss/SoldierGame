@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2414695050138576169}
   m_Layer: 0
   m_Name: StatueofLiberty
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

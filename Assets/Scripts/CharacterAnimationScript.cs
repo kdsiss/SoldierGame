@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterAnimationScript : MonoBehaviour
@@ -58,6 +59,7 @@ public class CharacterAnimationScript : MonoBehaviour
     public bool hasKey3 = false;
     public AudioClip damageSound;
     public AudioClip deathSound;
+    bool isDead = false;
 
     private bool punching; 
     // Start is called before the first frame update
@@ -77,6 +79,11 @@ public class CharacterAnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isDead)
+        {
+            return;
+        }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Climbing"))
         {
@@ -235,6 +242,7 @@ public class CharacterAnimationScript : MonoBehaviour
             }
             else if (other.CompareTag("Key2"))
             {
+                Debug.Log("Key 2 grabbed");
                 MoveKeyToUI(other.gameObject, 2);
                 hasKey2 = true;
             }
@@ -364,9 +372,42 @@ public class CharacterAnimationScript : MonoBehaviour
             damage(5f);
         }
     }
-    internal void die()
+    public void die()
     {
-        throw new NotImplementedException();
+        if (source != null && deathSound != null)
+        {
+            StartCoroutine(PlayDieSoundAndLoadScene());
+        }
+        else
+        {
+            LoadNextScene("deathScene");
+        }
+    }
+
+    private IEnumerator PlayDieSoundAndLoadScene()
+    {
+        isDead = true;
+        source.Stop();
+        source.clip = deathSound;
+        source.Play();
+        animator.SetBool("isDead", true);
+        animatorTransform.SetBool("isDead", true); 
+
+        yield return new WaitForSeconds(deathSound.length);
+
+        LoadNextScene("deathScene");
+    }
+
+    private void LoadNextScene(String nextSceneName)
+    {
+        if (!string.IsNullOrEmpty(nextSceneName))
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("Next scene name is not set.");
+        }
     }
 }
 

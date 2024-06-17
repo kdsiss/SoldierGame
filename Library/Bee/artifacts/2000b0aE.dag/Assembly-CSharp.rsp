@@ -336,6 +336,7 @@
 "Assets/CameraScript.cs"
 "Assets/DoorController.cs"
 "Assets/EnemyScript.cs"
+"Assets/HandScript.cs"
 "Assets/IntroGCScript.cs"
 "Assets/MovingPlatformScript.cs"
 "Assets/Portal.cs"
@@ -345,6 +346,9 @@
 "Assets/TimerScript.cs"
 "Assets/TransformCharacter.cs"
 "Assets/TurretScript.cs"
+"Assets/VictoryScript.cs"
+"Assets/WinScriptWin.cs"
+"Assets/ZoneOfDeathScript.cs"
 -langversion:9.0
 
 /deterministic

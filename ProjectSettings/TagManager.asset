@@ -15,6 +15,7 @@ TagManager:
   - Mariachi
   - Item
   - Punch
+  - HATCH
   layers:
   - Default
   - TransparentFX

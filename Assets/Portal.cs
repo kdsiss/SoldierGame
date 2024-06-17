@@ -17,8 +17,10 @@ public class PortalScript : MonoBehaviour
 
            
             PortalScript destPortalScript = destinationPortal.GetComponent<PortalScript>();
+            GetComponent<AudioSource>().Play(); 
             if (destPortalScript != null)
             {
+               
                 destPortalScript.isPlayerInPortal = true;
             }
         }
@@ -30,6 +32,7 @@ public class PortalScript : MonoBehaviour
         {
             
             isPlayerInPortal = false;
+            
         }
     }
 }

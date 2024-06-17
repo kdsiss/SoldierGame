@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: G17_Low
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47f8e509f50652b41888f2c90d581a4e, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 4302386978652058319, guid: 47f8e509f50652b41888f2c90d581a4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

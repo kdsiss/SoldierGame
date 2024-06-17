@@ -66,8 +66,12 @@
     <Compile Include="Assets\TextScript.cs" />
     <Compile Include="Assets\TurretScript.cs" />
     <Compile Include="Assets\MovingPlatformScript.cs" />
+    <Compile Include="Assets\ZoneOfDeathScript.cs" />
+    <Compile Include="Assets\VictoryScript.cs" />
+    <Compile Include="Assets\HandScript.cs" />
     <Compile Include="Assets\TransformCharacter.cs" />
     <Compile Include="Assets\CameraScript.cs" />
+    <Compile Include="Assets\WinScriptWin.cs" />
     <Compile Include="Assets\TimerScript.cs" />
     <Compile Include="Assets\IntroGCScript.cs" />
     <Compile Include="Assets\EnemyScript.cs" />

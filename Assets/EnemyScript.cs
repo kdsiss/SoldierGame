@@ -15,11 +15,13 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody rb;
     private Transform transform;
     private int sign = 1;
-
-    public AudioClip acDie; 
+    int hp = 5;
+    public AudioClip acDie;
+    AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -63,6 +65,16 @@ public class EnemyScript : MonoBehaviour
             {
                 die(); return true;
             }
+            else if (obj.tag.Equals("Item"))
+            {
+                hp--;
+                if (hp == 0)
+                {
+                    die();
+                   
+                }
+                return true;
+            }
             else
             {
                 return false;
@@ -83,16 +95,27 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    internal IEnumerable<WaitForSeconds> die()
+    public void die()
     {
+        if (audioSource != null && acDie != null)
+        {
+            StartCoroutine(PlayDieSoundAndDestroy());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator PlayDieSoundAndDestroy()
+    {
+        audioSource.Stop();
+        audioSource.clip = acDie;
+        audioSource.Play();
         
-        GetComponent<AudioSource>().Stop();
-        GetComponent<AudioSource>().clip = acDie;
-        GetComponent<AudioSource>().Play();
 
         yield return new WaitForSeconds(acDie.length);
 
         Destroy(gameObject);
-
     }
 }
